@@ -1,10 +1,14 @@
-import './App.css';
+import "./App.css";
+import Home from './pages/Home/Home.jsx';
 
 function App() {
   return (
     <div className="App">
-     
-     <p className="celular">Este contenido esta disponible solamente en dispositivos celulares.</p>
+      <Home />
+
+      <p className="celular">
+        Este contenido esta disponible solamente en dispositivos celulares.
+      </p>
     </div>
   );
 }

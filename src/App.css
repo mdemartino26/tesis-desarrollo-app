@@ -1,5 +1,7 @@
 body {
   margin: 0;
+  background-color: #01080D;
+  box-sizing: border-box;
 }
 
 h1,
