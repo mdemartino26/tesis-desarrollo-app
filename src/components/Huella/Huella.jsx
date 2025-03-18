@@ -13,7 +13,7 @@ const Huella = () => {
   };
 
   return (
-    <div className="huella-container" onClick={manejarEscaneo}>
+    <div className="huella-container" onClick={manejarEscaneo}  onContextMenu={(e) => e.preventDefault()}>
       <div className="huella"><img src="./img/huella.png" alt="huella" className="huella"/></div>
       {escaneando && (
         <motion.div
