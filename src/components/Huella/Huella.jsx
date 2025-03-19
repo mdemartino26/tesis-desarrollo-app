@@ -6,6 +6,7 @@ import "./styles.css";
 const Huella = () => {
   const [escaneando, setEscaneando] = useState(false);
   const navigate = useNavigate();
+  let touchTimeout = null;
 
   const manejarEscaneo = () => {
     setEscaneando(true);
@@ -15,25 +16,37 @@ const Huella = () => {
     }, 3000);
   };
 
+  const bloquearEventos = (e) => {
+    e.preventDefault();
+    return false;
+  };
+
   return (
     <div
       className="huella-container"
       onClick={manejarEscaneo}
-      onContextMenu={(e) => e.preventDefault()} 
-      onTouchStart={(e) => e.preventDefault()}  
+      onContextMenu={bloquearEventos}
+      onTouchStart={(e) => {
+        bloquearEventos(e);
+        touchTimeout = setTimeout(() => manejarEscaneo(), 500);
+      }}
+      onTouchEnd={() => clearTimeout(touchTimeout)}
     >
       <div className="huella">
         <button 
-          onTouchStart={(e) => e.preventDefault()} 
-          onContextMenu={(e) => e.preventDefault()} 
+          onTouchStart={bloquearEventos}
+          onTouchEnd={bloquearEventos}
+          onContextMenu={bloquearEventos}
         >
           <img 
             src="./img/huella.png" 
             alt="huella" 
             className="huella"
-            onDragStart={(e) => e.preventDefault()} 
-            onTouchStart={(e) => e.preventDefault()} 
-            onContextMenu={(e) => e.preventDefault()} 
+            draggable={false}
+            onDragStart={bloquearEventos}
+            onTouchStart={bloquearEventos}
+            onTouchEnd={bloquearEventos}
+            onContextMenu={bloquearEventos}
           />
         </button>
       </div>
