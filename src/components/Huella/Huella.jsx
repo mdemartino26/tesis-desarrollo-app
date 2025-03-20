@@ -33,11 +33,7 @@ const Huella = () => {
       onTouchEnd={() => clearTimeout(touchTimeout)}
     >
       <div className="huella">
-        <button 
-          onTouchStart={bloquearEventos}
-          onTouchEnd={bloquearEventos}
-          onContextMenu={bloquearEventos}
-        >
+      
           <img 
             src="./img/huella.png" 
             alt="huella" 
@@ -48,7 +44,7 @@ const Huella = () => {
             onTouchEnd={bloquearEventos}
             onContextMenu={bloquearEventos}
           />
-        </button>
+  
       </div>
       {escaneando && (
         <motion.div
