@@ -1,4 +1,3 @@
-import { color } from 'framer-motion';
 import React from 'react';
 import './styles.css'
 import Aplicaciones from '../../components/Aplicaciones/Aplicaciones';
@@ -27,7 +26,7 @@ function Menu() {
     return (
         <div className="menu">
           <p>Hola, soy el menú</p>
-          <div className="lista-aplicaciones">
+          <section className="lista-aplicaciones">
             {aplicaciones.map((app, index) => (
               <Aplicaciones 
                 key={index} 
@@ -36,7 +35,7 @@ function Menu() {
                 link={app.link} 
               />
             ))}
-          </div>
+          </section>
         </div>
       );
     }
