@@ -12,22 +12,17 @@ const Huella = () => {
     setEscaneando(true);
     setTimeout(() => {
       setEscaneando(false);
-      navigate("/menu");
+      navigate("/expediente");
     }, 3000);
   };
 
-  const bloquearEventos = (e) => {
-    e.preventDefault();
-    return false;
-  };
 
   return (
     <div
       className="huella-container"
       onClick={manejarEscaneo}
-      onContextMenu={bloquearEventos}
       onTouchStart={(e) => {
-        bloquearEventos(e);
+        
         touchTimeout = setTimeout(() => manejarEscaneo(), 500);
       }}
       onTouchEnd={() => clearTimeout(touchTimeout)}
@@ -39,10 +34,7 @@ const Huella = () => {
             alt="huella" 
             className="huella"
             draggable={false}
-            onDragStart={bloquearEventos}
-            onTouchStart={bloquearEventos}
-            onTouchEnd={bloquearEventos}
-            onContextMenu={bloquearEventos}
+            
           />
   
       </div>
