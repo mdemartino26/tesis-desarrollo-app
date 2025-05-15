@@ -1,12 +1,20 @@
 import React, { useState } from "react";
-import "./styles.css";
 import Aplicaciones from "../../components/Aplicaciones/Aplicaciones";
+import EscanerQR from "../../components/EscanerQR/EscanerQR";
 import Nav2 from "../../components/Nav/Nav2";
 import VictimaInfo from "../../components/Victima/VictimaInfo";
-import EscanerQR from "../../components/EscanerQR/EscanerQR";
+import './styles.css';
 
 function Menu() {
   const [mostrarEscaner, setMostrarEscaner] = useState(false);
+  const [documentos, setDocumentos] = useState([]);
+
+  const cerrarEscaner = (documento) => {
+    if (documento) {
+      setDocumentos(prev => [...prev, documento]);
+    }
+    setMostrarEscaner(false);
+  };
 
   const aplicaciones = [
     {
@@ -25,8 +33,9 @@ function Menu() {
       link: "/evidencia",
     },
     {
-      name: "Cámara",
+      name: "Escanear QR",
       img: "",
+      link: "#",
       onClick: () => setMostrarEscaner(true),
     },
   ];
@@ -42,17 +51,28 @@ function Menu() {
 
       <section className="lista-aplicaciones">
         {aplicaciones.map((app, index) => (
-          <Aplicaciones
-            key={index}
-            name={app.name}
-            img={app.img}
-            link={app.link}
-            onClick={app.onClick}
-          />
+          <article className="aplicaciones" key={index}>
+            <button onClick={app.onClick || (() => window.location.href = app.link)}>
+              <img src={app.img} alt={app.name} />
+            </button>
+            <p>{app.name}</p>
+          </article>
         ))}
       </section>
 
-      {mostrarEscaner && <EscanerQR onClose={() => setMostrarEscaner(false)} />}
+      {mostrarEscaner && <EscanerQR onClose={cerrarEscaner} />}
+
+      {documentos.length > 0 && (
+        <section className="documentos-visibles">
+          <h2>Documentos habilitados</h2>
+          {documentos.map((doc, i) => (
+            <div key={i}>
+              <h3>{doc.nombre}</h3>
+              <embed src={doc.url} width="100%" height="400px" type="application/pdf" />
+            </div>
+          ))}
+        </section>
+      )}
     </div>
   );
 }
