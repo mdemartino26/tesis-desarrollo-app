@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Popup from '../Popup/Popup';
+import './styles.css'
 
-function Input({ redirectPath = '/' }) {
+function Input({
+  redirectPath = '/',
+  titulo = 'Número de expediente:',
+  placeholder = '#000',
+  textoBoton = 'Ir',
+  valorCorrecto = '263',
+  mensajeErrorCustom = 'No se encontró un expediente con ese número',
+}) {
   const [inputValue, setInputValue] = useState('');
   const [mostrarPopup, setMostrarPopup] = useState(false);
   const [mensajeError, setMensajeError] = useState('');
@@ -18,10 +26,10 @@ function Input({ redirectPath = '/' }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (inputValue === '263') {
+    if (inputValue === valorCorrecto) {
       navigate(redirectPath);
     } else {
-      setMensajeError('No se encontró un expediente con ese número');
+      setMensajeError(mensajeErrorCustom);
       setMostrarPopup(true);
     }
   };
@@ -32,16 +40,18 @@ function Input({ redirectPath = '/' }) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form  className='alinearForm' onSubmit={handleSubmit}>
         <label>
-          Número de expediente:
+          {titulo}
           <input
+          className='input'
             type="text"
             value={`#${inputValue}`}
             onChange={handleChange}
+            placeholder={placeholder}
           />
         </label>
-        <button type="submit">Ir</button>
+        <button type="submit" className='botonInput'>{textoBoton}</button>
       </form>
 
       {mostrarPopup && (
@@ -50,6 +60,5 @@ function Input({ redirectPath = '/' }) {
     </div>
   );
 }
-
 
 export default Input;

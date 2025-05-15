@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.fondoGeneral {
+  background-color: #01080D;
+  position: relative;
+  min-height: 112vh;
+  overflow: hidden; 
+  z-index: 0;
+  
+}
+
+.fondoGeneral::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('../public/img/logo.png');
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: contain;
+  opacity: 0.2; 
+  z-index: -1;  
+}

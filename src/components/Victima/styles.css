@@ -1,0 +1,18 @@
+.victima-info {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 1rem;
+    color: white;
+    text-align: center;
+    margin-bottom: 2rem;
+    width: 90%;
+    max-width: 300px;
+  }
+  .victima-info h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .victima-info p {
+    font-size: 0.9rem;
+    margin: 0.2rem 0;
+  }

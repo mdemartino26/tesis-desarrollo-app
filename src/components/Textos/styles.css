@@ -1,0 +1,29 @@
+.heading1{
+        color: #f0d6b5; 
+        font-size: 1.2rem;
+        font-weight: 600;
+        font-family: 'Playfair Display', serif; 
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+        text-align: center;
+}
+
+.heading2{
+    color: white;
+}
+
+.heading3{
+    color: #f0d6b5; 
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.p{
+    color: white;
+}

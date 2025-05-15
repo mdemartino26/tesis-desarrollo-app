@@ -2,6 +2,9 @@ body {
   margin: 0;
   background-color: #01080D;
   box-sizing: border-box;
+  color: white;
+  height: 100vh;
+  overflow: hidden;
 }
 
 h1,
@@ -24,3 +27,4 @@ p {
     border: none;
   }
 }
+

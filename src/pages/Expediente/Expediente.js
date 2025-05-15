@@ -1,13 +1,26 @@
-import React from 'react'
-import Input from '../../components/Input/Input'
-import Fondo from '../../components/Fondo/Fondo'
+import React from "react";
+import Input from "../../components/Input/Input";
+import Heading1 from "../../components/Textos/Heading1";
+import Nav from "../../components/Nav/Nav";
+import './styles.css'
 
 export default function Expediente() {
   return (
-    <div>
-      <Fondo/>
-        <h2>Expediente</h2>
-        <Input redirectPath="/menu" />
+    <div className="fondoGeneral alinear">
+      <Nav />
+
+      <div className="contenido">
+        <Heading1 texto="Nº DE EXPEDIENTE" />
+
+        <Input
+          redirectPath="/menu"
+          titulo=""
+          placeholder=""
+          textoBoton="Buscar"
+          valorCorrecto="263"
+          mensajeErrorCustom="Ups, no encontramos ese expediente. Probá de nuevo."
+        />
+      </div>
     </div>
-  )
+  );
 }

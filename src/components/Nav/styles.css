@@ -1,0 +1,10 @@
+.navegacion{
+    display: flex;
+    justify-content: space-between;
+    margin: 2em;
+}
+
+.navegacion img{
+    width: 20%;
+    object-fit: contain;
+}

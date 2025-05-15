@@ -1,0 +1,29 @@
+.input {
+  text-align: center;
+  width: 80%;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #eed1b0;
+  color: #000;
+  font-size: 1rem;
+  outline: none;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+.botonInput {
+  width: 80%;
+  padding: 0.75rem 1rem;
+  background-color: transparent;
+  color: #eed1b0;
+  font-weight: bold;
+  border: 2px solid #eed1b0;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.alinearForm{
+    text-align: center;
+}
