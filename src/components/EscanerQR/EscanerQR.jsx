@@ -7,8 +7,8 @@ const EscanerQR = ({ onClose }) => {
     const documentosQR = [
       {
         id: "doc1",
-        nombre: "Informe forense",
-        url: "/documentos/informe.pdf",
+        nombre: "Declaracion Sofia Rivero",
+        url: "./documentos/sofiaRivero.pdf",
         codigoQR: "qr123informe2025",
       },
       {
