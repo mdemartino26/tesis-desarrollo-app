@@ -1,27 +1,3 @@
-.escaner{
-    margin-top: '20px';
-    padding: '10px 20px';
-    background-color: '#f2d3b1';
-    border: 'none';
-    border-radius: '10px';
-    font-weight: 'bold';
-    cursor: 'pointer';
-}
-
-.fondoEscaner{
-        background-color: '#000000cc';
-        position: 'fixed';
-        top: 0;
-        left: 0;
-        z-index: 999;
-        width: '100vw';
-        height: '100vh';
-        display: 'flex';
-        align-items: 'center';
-        justify-content: 'center';
-        flex-direction: 'column';
-}
-
 .popup-escaner {
     position: fixed;
     top: 0;
@@ -40,6 +16,8 @@
     padding: 20px;
     border-radius: 10px;
     position: relative;
+    width: 90%;
+    max-width: 500px;
   }
   
   .cerrar-btn {
