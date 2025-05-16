@@ -40,7 +40,6 @@ function Evidencia() {
   };
 
   const irADetalle = (doc) => {
-    // Podés pasar datos con state o params, acá uso state
     navigate(`/evidencia/${doc.id}`, { state: { documento: doc } });
   };
 
@@ -50,3 +49,26 @@ function Evidencia() {
       <Heading1 texto="Evidencia" />
 
       <div style={{ padding: "1rem" }}>
+        <input
+          type="text"
+          value={codigoIngresado}
+          onChange={(e) => setCodigoIngresado(e.target.value)}
+          placeholder="Ingresá el código secreto"
+        />
+        <button onClick={manejarCodigo}>Enviar</button>
+
+        <ul>
+          {documentosHabilitados.map((doc) => (
+            <li key={doc.id}>
+              <h3>{doc.nombre}</h3>
+              <p>{doc.descripcion}</p>
+              <button onClick={() => irADetalle(doc)}>Ver detalle</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
+  );
+}
+
+export default Evidencia;
