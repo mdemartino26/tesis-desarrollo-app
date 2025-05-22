@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Nav2 from "../../components/Nav/Nav2";
 import Heading1 from "../../components/Textos/Heading1";
-import { useNavigate } from "react-router-dom";
 
 const documentosDisponibles = [
   {
@@ -9,21 +8,18 @@ const documentosDisponibles = [
     nombre: "Declaración de Sofía Rivero",
     urlPDF: "/documentos/sofiaRivero.pdf",
     codigoSecreto: "clave_sofia2025",
-    descripcion: "Documento oficial de la declaración de Sofía Rivero.",
   },
   {
     id: "doc2",
     nombre: "Testimonio",
     urlPDF: "/documentos/testimonio.pdf",
     codigoSecreto: "testimonio2025",
-    descripcion: "Testimonio clave para la causa.",
   },
 ];
 
 function Evidencia() {
   const [codigoIngresado, setCodigoIngresado] = useState("");
   const [documentosHabilitados, setDocumentosHabilitados] = useState([]);
-  const navigate = useNavigate();
 
   const manejarCodigo = () => {
     const docEncontrado = documentosDisponibles.find(
@@ -39,10 +35,6 @@ function Evidencia() {
     }
   };
 
-  const irADetalle = (doc) => {
-    navigate(`/evidencia/${doc.id}`, { state: { documento: doc } });
-  };
-
   return (
     <>
       <Nav2 />
@@ -55,18 +47,20 @@ function Evidencia() {
           onChange={(e) => setCodigoIngresado(e.target.value)}
           placeholder="Ingresá el código secreto"
         />
-        <button onClick={manejarCodigo}>Enviar</button>
-
-        <ul>
-          {documentosHabilitados.map((doc) => (
-            <li key={doc.id}>
-              <h3>{doc.nombre}</h3>
-              <p>{doc.descripcion}</p>
-              <button onClick={() => irADetalle(doc)}>Ver detalle</button>
-            </li>
-          ))}
-        </ul>
+        <button onClick={manejarCodigo}>Desbloquear</button>
       </div>
+
+      {documentosHabilitados.map((doc) => (
+        <div key={doc.id} style={{ marginTop: "2rem" }}>
+          <h3>{doc.nombre}</h3>
+          <iframe
+            src={doc.urlPDF}
+            width="100%"
+            height="600px"
+            title={doc.nombre}
+          ></iframe>
+        </div>
+      ))}
     </>
   );
 }

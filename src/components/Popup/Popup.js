@@ -1,17 +1,23 @@
-import React from "react";
-import './styles.css'
+import React from 'react';
+import './styles.css';
+import { declarResumidas } from './declarResumidas';
 
-function Popup({ mensaje, onVolver }) {
-    return (
-      <div className="overlay">
-        <div className="popup">
-          <p>{mensaje}</p>
-          <button onClick={onVolver}>Volver</button>
-        </div>
+const PopupDeclaracion = ({ visible, onClose }) => {
+  if (!visible) return null;
+
+  const { titulo, contenido } = declarResumidas[0];
+
+  return (
+    <div className="popup-overlay">
+      <div className="popup-content">
+        <button className="popup-close" onClick={onClose}>×</button>
+        <h2 className="popup-title">{titulo}</h2>
+        {contenido.map((parrafo, index) => (
+          <p className="popup-text" key={index}>{parrafo}</p>
+        ))}
       </div>
-    );
-  };
-  
-  
-  
-  export default Popup;
+    </div>
+  );
+};
+
+export default PopupDeclaracion;

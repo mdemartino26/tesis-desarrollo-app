@@ -1,17 +1,16 @@
-// src/pages/Menu/Menu.js
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Nav2 from "../../components/Nav/Nav2";
 import VictimaInfo from "../../components/Victima/VictimaInfo";
-import EscanerQR from "../../components/EscanerQR/EscanerQR";
 import './styles.css';
 
 function Menu() {
-  const [mostrarEscaner, setMostrarEscaner] = useState(false);
 
   const aplicaciones = [
     { name: "Mensajes", img: "", link: "/mensajes" },
     { name: "Chat", img: "", link: "/chat" },
     { name: "Evidencia", img: "", link: "/evidencia" },
+    { name: "Sospechosos", img: "", link: "/sospechosos" },
+    { name: "Scanner", img: "", link: "/scanner" }
    
   ];
 
