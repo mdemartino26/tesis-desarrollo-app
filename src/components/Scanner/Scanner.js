@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Nav2 from "../Nav/Nav2";
+import ButtonMenu from "../ButtonMenu/ButtonMenu";
 
 
 const declaraciones = [
@@ -32,6 +34,7 @@ function Scanner() {
 
   return (
     <div className="scanner-page fondoGeneral">
+      <Nav2 />
       <h2>Simulador de Scanner</h2>
 
       <div className="scanner-frame">
@@ -48,6 +51,7 @@ function Scanner() {
       </select>
 
       {mensaje && <div className="popup">{mensaje}</div>}
+      <ButtonMenu />
     </div>
   );
 }

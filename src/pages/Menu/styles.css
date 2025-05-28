@@ -1,35 +1,72 @@
-p{
-    color: white;
+p {
+  color: #f2d7b6;
+  text-align: left;
+}
+
+h2 {
+  color: #f2d7b6;
+}
+
+:root {
+  --dorado: #d0b06d;
+  --grisOscuro: #1a1a1a;
+  --grisMedio: #2b2b2b;
+  --font-body: "Poppins", sans-serif;
+}
+
+.fondoGeneral {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.apps-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0 1rem;
+  max-width: 800px;
+  width: 100%;
+}
+
+.app-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em 0em;
+}
+
+.app-img {
+  width: 42%;
+  max-width: 140px;
+  aspect-ratio: 1 / 1;
+  background: var(--grisOscuro);
+  border-radius: 20px;
+ padding: 0.8rem;
 }
 
 
-.popup-qr {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
+.app-button img {
+  width: 50%;
+  height: auto;
+  margin-bottom: 0.5rem;
+  object-fit: contain;
+  aspect-ratio: 1 / 1;
+}
+
+.app-button p {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+@media (min-width: 480px) {
+  .app-button {
+    width: 28%;
   }
-  
-  .popup-contenido {
-    background: white;
-    padding: 1rem;
-    border-radius: 8px;
-    position: relative;
+}
+
+@media (min-width: 768px) {
+  .app-button {
+    width: 21%;
   }
-  
-  .popup-contenido .cerrar {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 18px;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
+}
