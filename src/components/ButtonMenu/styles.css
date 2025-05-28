@@ -1,4 +1,14 @@
 .inicio-button{
     background-color: #01080D;
+    border-radius: 50%;
+    width: 20%;
 }
 
+
+.boton-menu{
+    text-align: center;
+}
+
+.boton-menu img {
+    width: 100%;
+}
