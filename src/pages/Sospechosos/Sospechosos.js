@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Nav2 from "../../components/Nav/Nav2";
+import ButtonMenu from "../../components/ButtonMenu/ButtonMenu";
 
 
 const declaraciones = [
@@ -17,6 +19,7 @@ function Sospechosos() {
 
   return (
     <div className="sospechosos-page fondoGeneral">
+      <Nav2 />
       <h2>Sospechosos</h2>
 
       {desbloqueadas.length === 0 ? (
@@ -32,6 +35,7 @@ function Sospechosos() {
             ))}
         </section>
       )}
+      <ButtonMenu />
     </div>
   );
 }
