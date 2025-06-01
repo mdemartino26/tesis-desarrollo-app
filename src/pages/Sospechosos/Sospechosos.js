@@ -4,18 +4,21 @@ import ButtonMenu from "../../components/ButtonMenu/ButtonMenu";
 
 
 const declaraciones = [
-  { id: 1, resumen: "Declaración de testigo ocular en la escena." },
-  { id: 2, resumen: "Declaración del vecino que escuchó ruidos." },
-  { id: 3, resumen: "Declaración del portero del edificio." },
+  { id: 1, codigo: "DOC001", resumen: "Declaración de testigo ocular en la escena." },
+  { id: 2, codigo: "DOC002", resumen: "Declaración del vecino que escuchó ruidos." },
+  { id: 3, codigo: "DOC003", resumen: "Declaración del portero del edificio." },
 ];
 
 function Sospechosos() {
   const [desbloqueadas, setDesbloqueadas] = useState([]);
 
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("scannerData")) || [];
-    setDesbloqueadas(data);
-  }, []);
+ useEffect(() => {
+  const data = JSON.parse(localStorage.getItem("scannerData")) || [];
+  const idsSospechosos = data
+    .filter((item) => item.tipo === "sospechoso")
+    .map((item) => item.id);
+  setDesbloqueadas(idsSospechosos);
+}, []);
 
   return (
     <div className="sospechosos-page fondoGeneral">

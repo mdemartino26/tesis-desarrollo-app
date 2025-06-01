@@ -1,68 +1,46 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Nav2 from "../../components/Nav/Nav2";
-import Heading1 from "../../components/Textos/Heading1";
+import ButtonMenu from "../../components/ButtonMenu/ButtonMenu";
 
-const documentosDisponibles = [
-  {
-    id: "doc1",
-    nombre: "Declaración de Sofía Rivero",
-    urlPDF: "/documentos/sofiaRivero.pdf",
-    codigoSecreto: "clave_sofia2025",
-  },
-  {
-    id: "doc2",
-    nombre: "Testimonio",
-    urlPDF: "/documentos/testimonio.pdf",
-    codigoSecreto: "testimonio2025",
-  },
+
+const declaraciones = [
+  { id: 1, codigo: "DOC001", resumen: "Declaración de testigo ocular en la escena." },
+  { id: 2, codigo: "DOC002", resumen: "Declaración del vecino que escuchó ruidos." },
+  { id: 3, codigo: "DOC003", resumen: "Declaración del portero del edificio." },
 ];
 
-function Evidencia() {
-  const [codigoIngresado, setCodigoIngresado] = useState("");
-  const [documentosHabilitados, setDocumentosHabilitados] = useState([]);
+function Sospechosos() {
+  const [desbloqueadas, setDesbloqueadas] = useState([]);
 
-  const manejarCodigo = () => {
-    const docEncontrado = documentosDisponibles.find(
-      (doc) => doc.codigoSecreto === codigoIngresado.trim()
-    );
-    if (docEncontrado) {
-      if (!documentosHabilitados.some((doc) => doc.id === docEncontrado.id)) {
-        setDocumentosHabilitados([...documentosHabilitados, docEncontrado]);
-      }
-      setCodigoIngresado("");
-    } else {
-      alert("Código incorrecto.");
-    }
-  };
+ useEffect(() => {
+  const data = JSON.parse(localStorage.getItem("scannerData")) || [];
+  const idsSospechosos = data
+    .filter((item) => item.tipo === "evidencia")
+    .map((item) => item.id);
+  setDesbloqueadas(idsSospechosos);
+}, []);
 
   return (
-    <>
+    <div className="sospechosos-page fondoGeneral">
       <Nav2 />
-      <Heading1 texto="Evidencia" />
+      <h2>Sospechosos</h2>
 
-      <div style={{ padding: "1rem" }}>
-        <input
-          type="text"
-          value={codigoIngresado}
-          onChange={(e) => setCodigoIngresado(e.target.value)}
-          placeholder="Ingresá el código secreto"
-        />
-        <button onClick={manejarCodigo}>Desbloquear</button>
-      </div>
-
-      {documentosHabilitados.map((doc) => (
-        <div key={doc.id} style={{ marginTop: "2rem" }}>
-          <h3>{doc.nombre}</h3>
-          <iframe
-            src={doc.urlPDF}
-            width="100%"
-            height="600px"
-            title={doc.nombre}
-          ></iframe>
-        </div>
-      ))}
-    </>
+      {desbloqueadas.length === 0 ? (
+        <p>Escaneá los códigos para agregar a la lista.</p>
+      ) : (
+        <section className="cards-container">
+          {declaraciones
+            .filter((decl) => desbloqueadas.includes(decl.id))
+            .map((decl) => (
+              <div className="card" key={decl.id} onClick={() => alert(decl.resumen)}>
+                <p>Sospechoso #{decl.id}</p>
+              </div>
+            ))}
+        </section>
+      )}
+      <ButtonMenu />
+    </div>
   );
 }
 
-export default Evidencia;
+export default Sospechosos;

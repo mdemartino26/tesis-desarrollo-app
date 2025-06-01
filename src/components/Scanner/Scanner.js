@@ -2,33 +2,55 @@ import React, { useState } from "react";
 import Nav2 from "../Nav/Nav2";
 import ButtonMenu from "../ButtonMenu/ButtonMenu";
 
-
 const declaraciones = [
-  { id: 1, resumen: "Declaración de testigo ocular en la escena." },
-  { id: 2, resumen: "Declaración del vecino que escuchó ruidos." },
-  { id: 3, resumen: "Declaración del portero del edificio." },
+  {
+    id: 1,
+    codigo: "DOC001",
+    tipo: "sospechoso",
+    resumen: "Declaración de testigo ocular en la escena.",
+  },
+  {
+    id: 2,
+    codigo: "DOC002",
+    tipo: "evidencia",
+    resumen: "Declaración del vecino que escuchó ruidos.",
+  },
+  {
+    id: 3,
+    codigo: "DOC003",
+    tipo: "sospechoso",
+    resumen: "Declaración del portero del edificio.",
+  },
 ];
 
 function Scanner() {
+  const [codigoIngresado, setCodigoIngresado] = useState("");
   const [mensaje, setMensaje] = useState("");
 
-  const handleSeleccion = (e) => {
-    const id = parseInt(e.target.value);
-    if (!id) return;
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
+    const doc = declaraciones.find(
+      (decl) =>
+        decl.codigo.toLowerCase() === codigoIngresado.trim().toLowerCase()
+    );
+
+    if (!doc) {
+      setMensaje("Código no válido.");
+      setTimeout(() => setMensaje(""), 3000);
+      return;
+    }
 
     const guardados = JSON.parse(localStorage.getItem("scannerData")) || [];
 
-
-    if (!guardados.includes(id)) {
-      guardados.push(id);
+    if (!guardados.some((item) => item.id === doc.id)) {
+      guardados.push({ id: doc.id, tipo: doc.tipo });
       localStorage.setItem("scannerData", JSON.stringify(guardados));
       setMensaje("Documento agregado.");
     } else {
       setMensaje("Este documento ya fue escaneado.");
     }
-
-
+    setCodigoIngresado("");
     setTimeout(() => setMensaje(""), 3000);
   };
 
@@ -41,16 +63,18 @@ function Scanner() {
         <p>Simulación de cámara</p>
       </div>
 
-      <select onChange={handleSeleccion} defaultValue="">
-        <option value="" disabled>Seleccioná una declaración</option>
-        {declaraciones.map((decl) => (
-          <option key={decl.id} value={decl.id}>
-            {decl.resumen}
-          </option>
-        ))}
-      </select>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Ingresá el código del documento"
+          value={codigoIngresado}
+          onChange={(e) => setCodigoIngresado(e.target.value)}
+        />
+        <button type="submit">Escanear</button>
+      </form>
 
       {mensaje && <div className="popup">{mensaje}</div>}
+
       <ButtonMenu />
     </div>
   );
