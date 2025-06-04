@@ -1,27 +1,7 @@
 import React, { useState } from "react";
 import Nav2 from "../Nav/Nav2";
 import ButtonMenu from "../ButtonMenu/ButtonMenu";
-
-const declaraciones = [
-  {
-    id: 1,
-    codigo: "DOC001",
-    tipo: "sospechoso",
-    resumen: "Declaración de testigo ocular en la escena.",
-  },
-  {
-    id: 2,
-    codigo: "DOC002",
-    tipo: "evidencia",
-    resumen: "Declaración del vecino que escuchó ruidos.",
-  },
-  {
-    id: 3,
-    codigo: "DOC003",
-    tipo: "sospechoso",
-    resumen: "Declaración del portero del edificio.",
-  },
-];
+import declaraciones from "../../components/Declaraciones/Declaraciones.js";
 
 function Scanner() {
   const [codigoIngresado, setCodigoIngresado] = useState("");
@@ -50,6 +30,7 @@ function Scanner() {
     } else {
       setMensaje("Este documento ya fue escaneado.");
     }
+
     setCodigoIngresado("");
     setTimeout(() => setMensaje(""), 3000);
   };
