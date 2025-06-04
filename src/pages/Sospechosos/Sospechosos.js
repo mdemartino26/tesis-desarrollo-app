@@ -3,9 +3,12 @@ import Nav2 from "../../components/Nav/Nav2";
 import ButtonMenu from "../../components/ButtonMenu/ButtonMenu";
 import CardSospechosos from "../../components/Cards/CardSospechosos";
 import declaraciones from "../../components/Declaraciones/Declaraciones.js";
+import Popup from "../../components/Popup/Popup";
 
 function Sospechosos() {
   const [desbloqueadas, setDesbloqueadas] = useState([]);
+  const [popupVisible, setPopupVisible] = useState(false);
+  const [declaracionSeleccionada, setDeclaracionSeleccionada] = useState(null);
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("scannerData")) || [];
@@ -14,6 +17,16 @@ function Sospechosos() {
       .map((item) => item.id);
     setDesbloqueadas(idsSospechosos);
   }, []);
+
+  const mostrarPopup = (decl) => {
+    setDeclaracionSeleccionada(decl);
+    setPopupVisible(true);
+  };
+
+  const cerrarPopup = () => {
+    setPopupVisible(false);
+    setDeclaracionSeleccionada(null);
+  };
 
   return (
     <div className="sospechosos-page fondoGeneral">
@@ -27,13 +40,24 @@ function Sospechosos() {
           {declaraciones
             .filter((decl) => desbloqueadas.includes(decl.id))
             .map((decl) => (
-              <CardSospechosos key={decl.id} sospechoso={decl} />
+              <div key={decl.id} onClick={() => mostrarPopup(decl)}>
+                <CardSospechosos sospechoso={decl} />
+              </div>
             ))}
         </section>
       )}
+
+      {popupVisible && (
+        <Popup
+          declaracion={declaracionSeleccionada}
+          onClose={cerrarPopup}
+        />
+      )}
+
       <ButtonMenu />
     </div>
   );
 }
 
 export default Sospechosos;
+

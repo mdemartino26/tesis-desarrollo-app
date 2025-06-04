@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import Nav2 from "../Nav/Nav2";
 import ButtonMenu from "../ButtonMenu/ButtonMenu";
 import declaraciones from "../../components/Declaraciones/Declaraciones.js";
+import "./styles.css"; 
 
 function Scanner() {
   const [codigoIngresado, setCodigoIngresado] = useState("");
   const [mensaje, setMensaje] = useState("");
+  const [tipoMensaje, setTipoMensaje] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,7 +18,8 @@ function Scanner() {
     );
 
     if (!doc) {
-      setMensaje("Código no válido.");
+      setMensaje("Ese código no es válido");
+      setTipoMensaje("error");
       setTimeout(() => setMensaje(""), 3000);
       return;
     }
@@ -26,13 +29,18 @@ function Scanner() {
     if (!guardados.some((item) => item.id === doc.id)) {
       guardados.push({ id: doc.id, tipo: doc.tipo });
       localStorage.setItem("scannerData", JSON.stringify(guardados));
-      setMensaje("Documento agregado.");
+      setMensaje("Documento Escaneado");
+      setTipoMensaje("success");
     } else {
       setMensaje("Este documento ya fue escaneado.");
+      setTipoMensaje("error");
     }
 
     setCodigoIngresado("");
-    setTimeout(() => setMensaje(""), 3000);
+    setTimeout(() => {
+      setMensaje("");
+      setTipoMensaje("");
+    }, 3000);
   };
 
   return (
@@ -54,7 +62,16 @@ function Scanner() {
         <button type="submit">Escanear</button>
       </form>
 
-      {mensaje && <div className="popup">{mensaje}</div>}
+      {mensaje && (
+        <div className={`popup ${tipoMensaje}`}>
+          {tipoMensaje === "success" && (
+            <div className="circle">
+              <span className="checkmark">✓</span>
+            </div>
+          )}
+          <p>{mensaje}</p>
+        </div>
+      )}
 
       <ButtonMenu />
     </div>

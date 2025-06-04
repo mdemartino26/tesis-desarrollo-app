@@ -17,7 +17,7 @@ function Sospechosos() {
   return (
     <div className="sospechosos-page fondoGeneral">
       <Nav2 />
-      <h2>Sospechosos</h2>
+      <h2>evidencia</h2>
 
       {desbloqueadas.length === 0 ? (
         <p>Escaneá los códigos para agregar a la lista.</p>
