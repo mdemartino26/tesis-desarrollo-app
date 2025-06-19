@@ -16,7 +16,7 @@ p {
   display: none;
 }
 
-@media only screen and (orientation: landscape) {
+@media only screen and (min-width: 769px) {
   .celular {
     display: flex;
     justify-content: center;
@@ -24,7 +24,27 @@ p {
     height: 100vh;
     background-color: blue;
     color: white;
-    border: none;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 1rem;
   }
+
+  .contenido-principal {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .celular {
+    display: none;
+  }
+
+  .contenido-principal {
+    display: block;
+  }
+}
+
+.contenido-principal {
+  display: block; 
 }
 

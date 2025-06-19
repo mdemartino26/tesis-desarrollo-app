@@ -1,20 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Nav2 from "../Nav/Nav2";
 import ButtonMenu from "../ButtonMenu/ButtonMenu";
 import declaraciones from "../../components/Declaraciones/Declaraciones.js";
-import "./styles.css"; 
+import "./styles.css";
 
 function Scanner() {
   const [codigoIngresado, setCodigoIngresado] = useState("");
   const [mensaje, setMensaje] = useState("");
   const [tipoMensaje, setTipoMensaje] = useState("");
 
+  useEffect(() => {
+    const desbloqueadosPorDefecto = declaraciones
+      .filter(decl => ["DOC001", "DOC002", "DOC003"].includes(decl.codigo))
+      .map(({ id, tipo }) => ({ id, tipo }));
+
+    const guardados = JSON.parse(localStorage.getItem("scannerData"));
+
+    if (!guardados || guardados.length === 0) {
+      localStorage.setItem("scannerData", JSON.stringify(desbloqueadosPorDefecto));
+    }
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const doc = declaraciones.find(
-      (decl) =>
-        decl.codigo.toLowerCase() === codigoIngresado.trim().toLowerCase()
+      (decl) => decl.codigo.toLowerCase() === codigoIngresado.trim().toLowerCase()
     );
 
     if (!doc) {
