@@ -15,8 +15,10 @@ function Sospechosos() {
   }, []);
 
   return (
-    <div className="sospechosos-page fondoGeneral">
+    <div className="fondoGeneral">
+      
       <Nav2 />
+      <div className="sospechosos-page">
       <h2>evidencia</h2>
 
       {desbloqueadas.length === 0 ? (
@@ -27,13 +29,14 @@ function Sospechosos() {
             .filter((decl) => decl.tipo === "evidencia") 
             .filter((decl) => desbloqueadas.includes(decl.id))
             .map((decl) => (
-              <div className="card" key={decl.id} onClick={() => alert(decl.resumen)}>
-                <img src={decl.img} alt={decl.nombre} />
+              <div className="sospechoso-card" key={decl.id} onClick={() => alert(decl.resumen)}>
+                <img src={decl.img} alt={decl.nombre} className="sospechoso-img"/>
                 <p>{decl.nombre}</p>
               </div>
             ))}
         </section>
       )}
+      </div>
       <ButtonMenu />
     </div>
   );

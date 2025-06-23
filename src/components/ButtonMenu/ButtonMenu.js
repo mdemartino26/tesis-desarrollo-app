@@ -6,13 +6,13 @@ function ButtonMenu() {
     const navigate = useNavigate();
   
     const handleClick = () => {
-      navigate("/");
+      navigate("/menu");
     };
   
     return (
       <div className="boton-menu" onClick={handleClick}>
         <button className="inicio-button">
-          <img src="./img/inicio.png" alt="imagen"/>
+          <img src="./img/inicio.png" alt="menu"/>
         </button>
       </div>
     );

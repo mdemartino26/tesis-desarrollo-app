@@ -8,9 +8,9 @@ function CardSospechosos({ sospechoso, onClick }) {
         <img src={sospechoso.img} alt={sospechoso.nombre} className="sospechoso-img" />
       </div>
       <div className="sospechoso-info">
-        <h2>{sospechoso.nombre}</h2>
+        <h3>{sospechoso.nombre}</h3>
         <p>Edad: {sospechoso.edad}</p>
-        <p>Relación con la víctima: {sospechoso.relacion}</p>
+        <p>Relación: {sospechoso.relacion}</p>
       </div>
     </div>
   );

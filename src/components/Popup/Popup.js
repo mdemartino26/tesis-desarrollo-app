@@ -11,7 +11,14 @@ const Popup = ({ declaracion, onClose }) => {
           ×
         </button>
         <h3>{declaracion.nombre}</h3>
-        <p>{declaracion.resumen}</p>
+        <p>
+          {declaracion.resumen.map((oracion, index) => (
+            <span key={index}>
+              {oracion}
+              <br />
+            </span>
+          ))}
+        </p>
       </div>
     </div>
   );

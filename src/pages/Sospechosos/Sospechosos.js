@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import './styles.css'
 import Nav2 from "../../components/Nav/Nav2";
 import ButtonMenu from "../../components/ButtonMenu/ButtonMenu";
 import CardSospechosos from "../../components/Cards/CardSospechosos";
 import declaraciones from "../../components/Declaraciones/Declaraciones.js";
 import Popup from "../../components/Popup/Popup";
+
 
 function Sospechosos() {
   const [desbloqueadas, setDesbloqueadas] = useState([]);
@@ -29,30 +31,29 @@ function Sospechosos() {
   };
 
   return (
-    <div className="sospechosos-page fondoGeneral">
+    <div className="fondoGeneral">
       <Nav2 />
-      <h2>Sospechosos</h2>
+      <div className="sospechosos-page">
+        <h2>Sospechosos</h2>
 
-      {desbloqueadas.length === 0 ? (
-        <p>Escaneá los códigos para agregar a la lista.</p>
-      ) : (
-        <section className="cards-container">
-          {declaraciones
-            .filter((decl) => desbloqueadas.includes(decl.id))
-            .map((decl) => (
-              <div key={decl.id} onClick={() => mostrarPopup(decl)}>
-                <CardSospechosos sospechoso={decl} />
-              </div>
-            ))}
-        </section>
-      )}
+        {desbloqueadas.length === 0 ? (
+          <p>Escaneá los códigos para agregar a la lista.</p>
+        ) : (
+          <>
+            {declaraciones
+              .filter((decl) => desbloqueadas.includes(decl.id))
+              .map((decl) => (
+                <section key={decl.id} className="cards-container" onClick={() => mostrarPopup(decl)}>
+                  <CardSospechosos sospechoso={decl} />
+                </section>
+              ))}
+        </>
+        )}
 
-      {popupVisible && (
-        <Popup
-          declaracion={declaracionSeleccionada}
-          onClose={cerrarPopup}
-        />
-      )}
+        {popupVisible && (
+          <Popup declaracion={declaracionSeleccionada} onClose={cerrarPopup} />
+        )}
+      </div>
 
       <ButtonMenu />
     </div>
@@ -60,4 +61,3 @@ function Sospechosos() {
 }
 
 export default Sospechosos;
-

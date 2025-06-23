@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
-import Nav2 from "../Nav/Nav2";
-import ButtonMenu from "../ButtonMenu/ButtonMenu";
-import declaraciones from "../../components/Declaraciones/Declaraciones.js";
-import "./styles.css";
+import { useState, useEffect } from "react";
+import declaraciones from "../Declaraciones/Declaraciones.js";
 
-function Scanner() {
+export default function ScannerLogica() {
   const [codigoIngresado, setCodigoIngresado] = useState("");
   const [mensaje, setMensaje] = useState("");
   const [tipoMensaje, setTipoMensaje] = useState("");
@@ -54,39 +51,11 @@ function Scanner() {
     }, 3000);
   };
 
-  return (
-    <div className="scanner-page fondoGeneral">
-      <Nav2 />
-      <h2>Simulador de Scanner</h2>
-
-      <div className="scanner-frame">
-        <p>Simulación de cámara</p>
-      </div>
-
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Ingresá el código del documento"
-          value={codigoIngresado}
-          onChange={(e) => setCodigoIngresado(e.target.value)}
-        />
-        <button type="submit">Escanear</button>
-      </form>
-
-      {mensaje && (
-        <div className={`popup ${tipoMensaje}`}>
-          {tipoMensaje === "success" && (
-            <div className="circle">
-              <span className="checkmark">✓</span>
-            </div>
-          )}
-          <p>{mensaje}</p>
-        </div>
-      )}
-
-      <ButtonMenu />
-    </div>
-  );
+  return {
+    codigoIngresado,
+    setCodigoIngresado,
+    mensaje,
+    tipoMensaje,
+    handleSubmit
+  };
 }
-
-export default Scanner;

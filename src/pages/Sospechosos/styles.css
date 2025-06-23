@@ -1,0 +1,13 @@
+.sospechosos-page{
+    height: 60vh;
+}
+
+.sospechosos-page h2{
+    text-align: center;
+}
+
+.cards-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

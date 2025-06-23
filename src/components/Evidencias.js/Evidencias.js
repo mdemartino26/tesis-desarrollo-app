@@ -3,22 +3,6 @@ import EscanerQR from "../../components/EscanerQR/EscanerQR";
 import Nav2 from "../../components/Nav/Nav2";
 import "./styles.css";
 
-// Simulación de documentos bloqueados con sus QR
-const documentosQR = [
-  {
-    id: "doc1",
-    nombre: "Declaración Sofia Rivero",
-    url: "./documentos/sofiaRivero.pdf",
-    codigoQR: "qr123informe2025",
-  },
-  {
-    id: "doc2",
-    nombre: "Testimonio",
-    url: "./documentos/testimonio.pdf",
-    codigoQR: "qr456testimonio2025",
-  },
-];
-
 export default function Evidencias() {
   const [documentosHabilitados, setDocumentosHabilitados] = useState([]);
   const [mostrarEscaner, setMostrarEscaner] = useState(false);
