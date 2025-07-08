@@ -1,45 +1,73 @@
 import React, { useEffect, useState } from "react";
+import "./styles.css";
 import Nav2 from "../../components/Nav/Nav2";
 import ButtonMenu from "../../components/ButtonMenu/ButtonMenu";
 import declaraciones from "../../components/Declaraciones/Declaraciones.js";
+import Popup from "../../components/Popup/Popup";
+import CardEvidencia from "../../components/Cards/CardEvidencia.js";
 
-function Sospechosos() {
+function Evidencia() {
   const [desbloqueadas, setDesbloqueadas] = useState([]);
+  const [popupVisible, setPopupVisible] = useState(false);
+  const [declaracionSeleccionada, setDeclaracionSeleccionada] = useState(null);
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("scannerData")) || [];
-    const idsSospechosos = data
+    const idsEvidencias = data
       .filter((item) => item.tipo === "evidencia")
       .map((item) => item.id);
-    setDesbloqueadas(idsSospechosos);
+
+    const desbloqueadasIniciales = ["DOC004"];
+    const nuevasDesbloqueadas = [
+      ...new Set([...idsEvidencias, ...desbloqueadasIniciales]),
+    ];
+
+    setDesbloqueadas(nuevasDesbloqueadas);
   }, []);
+
+  const mostrarPopup = (decl) => {
+    setDeclaracionSeleccionada(decl);
+    setPopupVisible(true);
+  };
+
+  const cerrarPopup = () => {
+    setPopupVisible(false);
+    setDeclaracionSeleccionada(null);
+  };
 
   return (
     <div className="fondoGeneral">
-      
       <Nav2 />
       <div className="sospechosos-page">
-      <h2>evidencia</h2>
-
-      {desbloqueadas.length === 0 ? (
-        <p>Escaneá los códigos para agregar a la lista.</p>
-      ) : (
-        <section className="cards-container">
-          {declaraciones
-            .filter((decl) => decl.tipo === "evidencia") 
-            .filter((decl) => desbloqueadas.includes(decl.id))
-            .map((decl) => (
-              <div className="sospechoso-card" key={decl.id} onClick={() => alert(decl.resumen)}>
-                <img src={decl.img} alt={decl.nombre} className="sospechoso-img"/>
-                <p>{decl.nombre}</p>
-              </div>
-            ))}
+        <h2>Evidencias</h2>
+        <section className="cards-container-evidencia">
+          {desbloqueadas.length === 0 ? (
+            <p>Escaneá los códigos para agregar evidencias a la lista.</p>
+          ) : (
+            <>
+              {declaraciones
+                .filter(
+                  (decl) =>
+                    decl.tipo === "evidencia" &&
+                    desbloqueadas.includes(decl.codigo)
+                )
+                .map((decl) => (
+                  <article key={decl.codigo} onClick={() => mostrarPopup(decl)}>
+                    <CardEvidencia evidencia={decl} />
+                  </article>
+                ))}
+            </>
+          )}
         </section>
-      )}
+
+        {popupVisible && (
+          <Popup declaracion={declaracionSeleccionada} onClose={cerrarPopup} />
+        )}
       </div>
+
       <ButtonMenu />
     </div>
   );
 }
 
-export default Sospechosos;
+export default Evidencia;

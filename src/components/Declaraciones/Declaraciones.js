@@ -26,19 +26,43 @@ const declaraciones = [
       "La última vez que la vio, Clara estaba cansada y preocupada, y mencionó querer hablar sobre su futuro juntos, pero pospuso la conversación.",
       "Luis está desconcertado y no puede entender quién pudo hacerle daño a Clara.",
     ],
-    tipo: "evidencia",
+    tipo: "sospechoso",
     nombre: "Luis",
     img: "./img/luis.jpg",
     edad: "23 años",
+    relacion: "Novio",
   },
   {
     id: 3,
     codigo: "DOC003",
-    resumen: "Declaración del portero del edificio.",
+    resumen: [
+      "Hernán López, de 22 años, estudiaba en la universidad con Clara Torres. Aunque no eran muy cercanos, compartían clases y formaban parte del mismo grupo de estudio. Clara era responsable y solidaria.", "El día antes de su muerte, tenían planeado reunirse a estudiar, pero ella nunca apareció, lo cual fue inusual. Hernán le escribió, pero no obtuvo respuesta. Al salir del estudio, decidió pasar por la biblioteca y, al atravesar el parque, encontró el cuerpo de Clara entre los arbustos. Impactado, llamó a la policía.", "La última vez que la vio fue después de una clase de Procesos Cognitivos, cuando Clara se quedó hablando con el profesor. Nunca pensó que sería su último encuentro.",
+    ],
     tipo: "sospechoso",
-    nombre: "clara",
-    img: "./img/sospechosos.png",
-    edad: "22 años",
+    nombre: "Hernán",
+    img: "./img/hernan.jpg",
+    edad: "23 años",
+    relacion: "Compañero",
+  },
+  {
+    id: 4,
+    codigo: "DOC004",
+    resumen: [
+      "Celular de Clara",
+    ],
+    tipo: "evidencia",
+    nombre: "Celular de clara",
+    img: "./img/telefono.png",
+  },
+  {
+    id: 4,
+    codigo: "DOC004",
+    resumen: [
+      "Celular de Clara",
+    ],
+    tipo: "evidencia",
+    nombre: "Celular de clara",
+    img: "./img/telefono.png",
   },
 ];
 

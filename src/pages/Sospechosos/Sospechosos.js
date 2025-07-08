@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import './styles.css'
+import "./styles.css";
 import Nav2 from "../../components/Nav/Nav2";
 import ButtonMenu from "../../components/ButtonMenu/ButtonMenu";
 import CardSospechosos from "../../components/Cards/CardSospechosos";
 import declaraciones from "../../components/Declaraciones/Declaraciones.js";
 import Popup from "../../components/Popup/Popup";
-
 
 function Sospechosos() {
   const [desbloqueadas, setDesbloqueadas] = useState([]);
@@ -17,7 +16,13 @@ function Sospechosos() {
     const idsSospechosos = data
       .filter((item) => item.tipo === "sospechoso")
       .map((item) => item.id);
-    setDesbloqueadas(idsSospechosos);
+
+    const desbloqueadasIniciales = ["DOC001", "DOC002", "DOC003"];
+    const nuevasDesbloqueadas = [
+      ...new Set([...idsSospechosos, ...desbloqueadasIniciales]),
+    ];
+
+    setDesbloqueadas(nuevasDesbloqueadas);
   }, []);
 
   const mostrarPopup = (decl) => {
@@ -41,13 +46,17 @@ function Sospechosos() {
         ) : (
           <>
             {declaraciones
-              .filter((decl) => desbloqueadas.includes(decl.id))
+              .filter((decl) => desbloqueadas.includes(decl.codigo))
               .map((decl) => (
-                <section key={decl.id} className="cards-container" onClick={() => mostrarPopup(decl)}>
+                <section
+                  key={decl.id}
+                  className="cards-container"
+                  onClick={() => mostrarPopup(decl)}
+                >
                   <CardSospechosos sospechoso={decl} />
                 </section>
               ))}
-        </>
+          </>
         )}
 
         {popupVisible && (

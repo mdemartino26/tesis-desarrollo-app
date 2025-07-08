@@ -1,46 +1,12 @@
-.popup-escaner {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0,0,0,0.85);
+.sospechosos-page{
+    height: 60vh;
+}
+
+.sospechosos-page h2{
+    text-align: center;
+}
+
+.cards-container-evidencia{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-  }
-  
-  .escaner-popup {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    position: relative;
-    width: 90%;
-    max-width: 500px;
-  }
-  
-  .cerrar-btn {
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    background: crimson;
-    color: white;
-    border: none;
-    padding: 6px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .btn-escanear {
-    margin: 20px 0;
-    padding: 10px 15px;
-    background: #2c7;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
- 
+    justify-content: space-evenly;
+}

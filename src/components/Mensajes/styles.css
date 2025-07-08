@@ -1,0 +1,73 @@
+.msj {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #aaa;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.info .name {
+  font-weight: bold;
+}
+
+.badge {
+  background: orange;
+  color: white;
+  border-radius: 50%;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.chat-view {
+  padding: 10px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: white;
+}
+
+.messages {
+  margin: 10px 0;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  max-width: 70%;
+}
+
+.message.npc {
+  background: #e1d9c6;
+  align-self: flex-start;
+}
+
+.message.user {
+  background: #cfe5d2;
+  align-self: flex-end;
+  text-align: right;
+}
+
+.download-btn {
+  margin-top: 5px;
+  background: #333;
+  color: #fff;
+  padding: 5px;
+  border: none;
+  border-radius: 4px;
+}
+
+.reply-input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+}

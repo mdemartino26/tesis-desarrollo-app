@@ -1,19 +1,51 @@
-.sospechoso-card {
-  display: flex;
-  align-items: center;
-  background-color: #2f3438; /* Gris oscuro */
-  color: #f5d7a3; /* Beige claro */
+.evidencia-card {
+  background-color: #2f3438;
+  color: #f5d7a3;
   border-radius: 15px;
   padding: 15px;
   margin: 10px 0;
   width: 80%;
-  min-width: 350px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  justify-self: center;
+}
+
+.evidencia-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.evidencia-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.evidencia-infoh3 {
+  margin: 0 0 5px 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #f5d7a3;
+}
+
+.sospechoso-card {
+  background-color: #2f3438;
+  color: #f5d7a3;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 10px 0;
+  width: 80%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-self: center;
 }
 
 .sospechoso-img {
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   border-radius: 10px;
   object-fit: cover;
   margin-right: 15px;
@@ -26,7 +58,7 @@
   font-size: 16px;
 }
 
-.sospechoso-info h3 {
+.sospechoso-infoh3 {
   margin: 0 0 5px 0;
   font-size: 18px;
   font-weight: bold;
