@@ -17,7 +17,7 @@ function Scanner() {
   return (
     <div className="scanner-page fondoGeneral">
       <Nav2 />
-      <div className="sospechosos-page">
+      <div className="sospechosos-page scanner">
       <h2>Simulador de Scanner</h2>
 
 

@@ -21,7 +21,7 @@ code {
 .fondoGeneral {
   background-color: #01080D;
   position: relative;
-  min-height: 112vh;
+  min-height: 100vh;
   overflow: hidden; 
   z-index: 0;
   
@@ -31,7 +31,7 @@ code {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url('../public/img/logo.png');
+  background-image: url('../public/img/fondo.png');
   background-repeat: no-repeat;
   background-position: bottom center;
   background-size: contain;
