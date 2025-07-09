@@ -3,7 +3,7 @@
   justify-content: space-around;
   margin: 2em;
   width: 100%;
-  box-shadow: 0 4px 8px 0 rgb(69 69 69 / 20%), 0 6px 20px 0 rgb(75 75 75 / 19%);
+  box-shadow: 0 4px 8px 0 rgba(29, 29, 29, 0.2), 0 6px 20px 0 rgba(48, 48, 48, 0.19);
   padding-bottom: 1em;
 }
 
