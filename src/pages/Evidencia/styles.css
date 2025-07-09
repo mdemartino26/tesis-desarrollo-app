@@ -10,3 +10,7 @@
     display: flex;
     justify-content: space-evenly;
 }
+
+.evidence-article{
+    width: 50%;
+}

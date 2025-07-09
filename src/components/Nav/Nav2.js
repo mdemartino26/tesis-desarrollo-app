@@ -6,7 +6,7 @@ export default function Nav2() {
   return (
     <div className="navegacion">
       <img src="./img/logo.png" alt="logo" className="logoInicial" />
-      <Heading3 texto="#263"/>
+      <Heading3 texto="#4568"/>
       <img src="./img/detective.png" alt="logo" className="logoInicial" />
     </div>
   );

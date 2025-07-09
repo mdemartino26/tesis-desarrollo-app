@@ -17,7 +17,7 @@ export default function Expediente() {
           titulo=""
           placeholder=""
           textoBoton="Buscar"
-          valorCorrecto="263"
+          valorCorrecto="4568"
           mensajeErrorCustom="Ups, no encontramos ese expediente. Probá de nuevo."
         />
       </div>

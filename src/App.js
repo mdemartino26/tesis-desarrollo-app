@@ -9,6 +9,7 @@ import Scanner from "./pages/Scanner/Scanner";
 import Mensajes from "./pages/Mensajes/Mensajes";
 import Chat from "./pages/Chat/Chat";
 import Telefono from "./pages/Telefono/Telefono";
+import NotificacionDetective from "./components/Notificacion/Notificacion";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/telefono" element={<Telefono />} />
         </Routes>
       </Router>
+      <NotificacionDetective /> 
 
       <p className="celular">
         Este contenido esta disponible solamente en dispositivos celulares.

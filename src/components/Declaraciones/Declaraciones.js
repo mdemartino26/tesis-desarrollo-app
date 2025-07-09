@@ -28,7 +28,7 @@ const declaraciones = [
       "Sabe que Hernán la encontró y cree que fue la <span class='destacado'> última persona en ver a Clara con vida</span>",
     ],
     tipo: "sospechoso",
-    nombre: "Luis",
+    nombre: "Luis Álvarez",
     img: "./img/luis.jpg",
     edad: "23 años",
     relacion: "Novio",
@@ -40,7 +40,7 @@ const declaraciones = [
       "Hernán López, de 22 años, estudiaba en la universidad con Clara Torres. Aunque no eran muy cercanos, compartían clases y formaban parte del mismo grupo de estudio. Clara era responsable y solidaria.", "El día de su muerte, era <span class='destacado'> uno de los dos dias de la semana en el que se reunían</span>, pero ella nunca apareció, lo cual fue inusual. Hernán le escribió, pero no obtuvo respuesta. Al salir de la biblioteca y, al atravesar el parque, encontró el cuerpo de Clara entre los arbustos. Impactado, llamó a la policía.", " <span class='destacado'> La última vez que la vio con vida fue después de una clase de Procesos Cognitivos, cuando Clara se quedó hablando con el profesor, los eschuchó discutir y asumió que era por correcciones del último trabajo que entregaron. </span>",
     ],
     tipo: "sospechoso",
-    nombre: "Hernán",
+    nombre: "Hernán López",
     img: "./img/hernan.jpg",
     edad: "23 años",
     relacion: "Compañero",
@@ -52,18 +52,20 @@ const declaraciones = [
       "Celular de Clara",
     ],
     tipo: "evidencia",
-    nombre: "Celular de clara",
-    img: "./img/telefono.png",
+    nombre: "Pulsera",
+    img: "./img/pulsera.png",
   },
   {
-    id: 4,
-    codigo: "DOC004",
+    id: 5,
+    codigo: "DOC005",
     resumen: [
       "Celular de Clara",
     ],
     tipo: "evidencia",
     nombre: "Celular de clara",
     img: "./img/telefono.png",
+    duenio: "-",
+
   },
 ];
 

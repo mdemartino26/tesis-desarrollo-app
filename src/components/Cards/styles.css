@@ -10,8 +10,7 @@
 }
 
 .evidencia-img {
-  width: 60px;
-  height: 60px;
+  width: 100%;
   border-radius: 10px;
   object-fit: cover;
   margin-right: 15px;
@@ -35,17 +34,16 @@
   background-color: #2f3438;
   color: #f5d7a3;
   border-radius: 15px;
-  padding: 15px;
   margin: 10px 0;
-  width: 80%;
+  width: 100%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   display: flex;
   justify-self: center;
+  align-items: center;
 }
 
 .sospechoso-img {
-  width: 60px;
-  height: 60px;
+  height: 100px;
   border-radius: 10px;
   object-fit: cover;
   margin-right: 15px;

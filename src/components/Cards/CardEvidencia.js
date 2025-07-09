@@ -9,8 +9,6 @@ function CardEvidencia({ evidencia, onClick }) {
       </div>
       <div className="evidencia-info">
         <h3>{evidencia.nombre}</h3>
-        <p>Edad: {evidencia.edad}</p>
-        <p>Relación: {evidencia.relacion}</p>
       </div>
     </div>
   );

@@ -13,13 +13,14 @@ function Sospechosos() {
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("scannerData")) || [];
-    const idsSospechosos = data
+    const codigosSospechosos = data
       .filter((item) => item.tipo === "sospechoso")
-      .map((item) => item.id);
+      .map((item) => item.codigo);
 
-    const desbloqueadasIniciales = ["DOC001", "DOC002", "DOC003"];
+    const desbloqueadasIniciales = ["DOC001", "DOC002"];
+
     const nuevasDesbloqueadas = [
-      ...new Set([...idsSospechosos, ...desbloqueadasIniciales]),
+      ...new Set([...codigosSospechosos, ...desbloqueadasIniciales]),
     ];
 
     setDesbloqueadas(nuevasDesbloqueadas);

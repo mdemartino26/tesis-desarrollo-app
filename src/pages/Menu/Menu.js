@@ -6,11 +6,11 @@ import "./styles.css";
 function Menu() {
   const aplicaciones = [
     { name: "Mensajes", img: "./img/mensajes.png", link: "/mensajes" },
-    { name: "Chat", img: "./img/mensajes.png", link: "/chat" },
+    { name: "Chat", img: "./img/chat.png", link: "/chat" },
     { name: "Evidencia", img: "./img/evidencia.png", link: "/evidencia" },
     { name: "Sospechosos", img: "./img/sospechosos.png", link: "/sospechosos" },
     { name: "Teléfono", img: "./img/telefono.png", link: "/telefono" },
-    { name: "Cámara", img: "./img/camara.png", link: "/scanner" },
+    { name: "Escáner", img: "./img/camara.png", link: "/scanner" },
   ];
 
   return (

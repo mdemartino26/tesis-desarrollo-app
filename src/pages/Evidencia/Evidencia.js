@@ -52,7 +52,7 @@ function Evidencia() {
                     desbloqueadas.includes(decl.codigo)
                 )
                 .map((decl) => (
-                  <article key={decl.codigo} onClick={() => mostrarPopup(decl)}>
+                  <article className="evidence-article" key={decl.codigo} onClick={() => mostrarPopup(decl)}>
                     <CardEvidencia evidencia={decl} />
                   </article>
                 ))}
