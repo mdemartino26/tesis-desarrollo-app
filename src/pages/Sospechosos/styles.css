@@ -1,15 +1,15 @@
-.sospechosos-page{
-    height: 60vh;
-    width: 80%;
-   
+.sospechosos-page {
+  height: 60vh;
+  width: 80%;
+  place-self: center;
 }
 
-.sospechosos-page h2{
-    text-align: center;
+.sospechosos-page h2 {
+  text-align: center;
 }
 
-.cards-container{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+.cards-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }

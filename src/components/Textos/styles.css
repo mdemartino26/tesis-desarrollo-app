@@ -22,6 +22,7 @@
     letter-spacing: 1px;
     margin-bottom: 1rem;
     text-align: center;
+    align-self: center;
 }
 
 .p{
