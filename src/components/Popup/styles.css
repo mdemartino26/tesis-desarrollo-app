@@ -42,3 +42,8 @@
   cursor: pointer;
   color: white;
 }
+
+.destacado{
+  background-color: beige;
+  color: #333b40;
+}

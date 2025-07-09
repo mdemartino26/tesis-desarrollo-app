@@ -28,6 +28,57 @@
   padding: 10px;
 }
 
+.chat-header {
+  display: flex;
+  margin-bottom: 10%;
+  padding-bottom: 10%;
+  border-bottom: 1px solid #f2d7b6;
+}
+
+.chat-messages {
+  height: 50vh;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.chat-name {
+  width: 100%;
+  text-align: center;
+  color: #f2d7b6;
+}
+
+.chat-back-btn {
+  all: unset;
+  background-color: none;
+  color: #f2d7b6;
+}
+
+.chat-message.chat-user {
+  background-color: #f2d7b6;
+  color: #0a0c16;
+  width: 80%;
+  margin-left: auto;
+}
+
+.chat-message.chat-user p {
+  color: #0a0c16;
+}
+
+.chat-message.chat-npc {
+  width: 80%;
+  margin-left: 0;
+}
+
+.chat-message {
+  background-color: #2a2a2a;
+  padding: 12px 16px;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  position: relative;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
 .back-btn {
   background: none;
   border: none;
@@ -57,17 +108,21 @@
   text-align: right;
 }
 
-.download-btn {
-  margin-top: 5px;
-  background: #333;
-  color: #fff;
-  padding: 5px;
-  border: none;
-  border-radius: 4px;
+.attachment {
+  width: 50%;
+  background: #2a2a2a;
+  color: #808080;
+  margin-top: 3%;
+  padding: 5%;
+  border: 1px solid #e1d9c6;
+  border-radius: 10px;
+  margin-top: 5%;
 }
 
-.reply-input {
+.chat-reply-input {
   width: 100%;
-  padding: 8px;
-  margin-top: 10px;
+  border-radius: 25px;
+  padding: 4%;
+  background-color: #f2d7b6;
+  margin-top: 5%;
 }

@@ -19,23 +19,22 @@ function Mensajes() {
         {
           sender: "npc",
           text: "Hola Detective... nos alegra tenerte en el equipo nuevamente.",
-          time: 500,
+          time: 0,
         },
         {
           sender: "npc",
-          text: "Encontramos el celular de Clara en un arbusto cerca de la biblioteca...",
-          time: 2000,
+          text: "Encontramos el celular de Clara en un arbusto cerca de la biblioteca, nuestra analista de IT está encargandose de hackearlo para ver la información que tiene",
+          time: 0,
         },
         {
           sender: "user",
-          text: "Espero el mensaje",
-          time: 4000,
+          text: "Espero el mensaje de la técnica",
+          time: 0,
         },
         {
           sender: "npc",
-          text: "Detective, encontramos algunas pertenencias de Clara en la escena...",
-          time: 6000,
-          attachment: true,
+          text: "Necesitamos descubrir quien fue la última persona que vió con vida a Clara. Cuando lo sepas, hacemelo saber.",
+          time: 500,
         },
       ],
     },
@@ -45,7 +44,14 @@ function Mensajes() {
       icon: "💻",
       preview: "Hacé clic para ver los últimos mensajes...",
       unread: false,
-      messages: [],
+      
+      messages: [
+        {
+          sender: "npc",
+          text: "Hola Detective... logré desbloquear el celular de Clara. Podrás desbloquear la información en el botón siguiente.",
+          time: 0,
+          attachment: true,
+        },],
     },
   ]);
 
@@ -60,16 +66,32 @@ function Mensajes() {
     setSelectedId(id);
   };
 
+
+
+const handleSendMessage = (conversationId, newMsg) => {
+  setMessagesData((prev) =>
+    prev.map((conv) =>
+      conv.id === conversationId
+        ? { ...conv, messages: [...conv.messages, newMsg] }
+        : conv
+    )
+  );
+};
+
+
   return (
     <div className="fondoGeneral">
       <Nav2 />
       <div className="sospechosos-page">
-        <h2>Mensajes</h2>
+       
         {!selectedConversation ? (
+          <>
+           <h2>Mensajes</h2>
           <MensajesLista
             conversations={messagesData}
             onSelect={handleSelectConversation}
           />
+          </>
         ) : (
           <Chat
             conversation={selectedConversation}
@@ -83,6 +105,7 @@ function Mensajes() {
                 ]);
               }
             }}
+             onSendMessage={handleSendMessage}
           />
         )}
       </div>

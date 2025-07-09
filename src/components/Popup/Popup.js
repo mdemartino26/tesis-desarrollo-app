@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles.css"; 
+import "./styles.css";
 
 const Popup = ({ declaracion, onClose }) => {
   if (!declaracion) return null;
@@ -11,18 +11,17 @@ const Popup = ({ declaracion, onClose }) => {
           ×
         </button>
         <h3>{declaracion.nombre}</h3>
-        <p>
+        <div>
           {declaracion.resumen.map((oracion, index) => (
-            <span key={index}>
-              {oracion}
-              <br />
-            </span>
+            <p
+              key={index}
+              dangerouslySetInnerHTML={{ __html: oracion }}
+            />
           ))}
-        </p>
+        </div>
       </div>
     </div>
   );
 };
 
 export default Popup;
-
