@@ -18,7 +18,7 @@ function Scanner() {
     <div className="scanner-page fondoGeneral">
       <Nav2 />
       <div className="sospechosos-page scanner">
-      <h2>Simulador de Scanner</h2>
+      <h2>Escaner</h2>
 
 
       <form onSubmit={handleSubmit} className="formulario-scanner">
