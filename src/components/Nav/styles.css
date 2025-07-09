@@ -11,3 +11,7 @@
   width: 2em;
   object-fit: contain;
 }
+
+.chat-message p {
+  white-space: pre-line;
+}

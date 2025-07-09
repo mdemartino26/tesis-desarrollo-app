@@ -44,14 +44,14 @@ function Mensajes() {
       icon: "💻",
       preview: "Hacé clic para ver los últimos mensajes...",
       unread: false,
-      
       messages: [
         {
           sender: "npc",
           text: "Hola Detective... logré desbloquear el celular de Clara. Podrás desbloquear la información en el botón siguiente.",
           time: 0,
           attachment: true,
-        },],
+        },
+      ],
     },
   ]);
 
@@ -66,31 +66,48 @@ function Mensajes() {
     setSelectedId(id);
   };
 
+  const handleSendMessage = (conversationId, newMsg) => {
+    setMessagesData((prev) =>
+      prev.map((conv) =>
+        conv.id === conversationId
+          ? { ...conv, messages: [...conv.messages, newMsg] }
+          : conv
+      )
+    );
 
+    const normalizedInput = newMsg.text.toLowerCase().replace(/\s+/g, "");
+    const target = "raúltomaso".toLowerCase().replace(/\s+/g, "");
 
-const handleSendMessage = (conversationId, newMsg) => {
-  setMessagesData((prev) =>
-    prev.map((conv) =>
-      conv.id === conversationId
-        ? { ...conv, messages: [...conv.messages, newMsg] }
-        : conv
-    )
-  );
-};
+    if (normalizedInput === target && conversationId === "smith") {
+      const detectiveMsg = {
+        sender: "npc",
+        text: `Lo que no se dijo en voz alta, se deslizó en tinta...\n\ndejé en tu escritorio una pista clave, encontrá el objeto con el símbolo que responde este acertijo:\n\nSiempre están al frente,\npero no te abren la entrada.\nSirven para decir “te quiero”\no quedarte bien callada.`,
+        time: 0,
+      };
 
+      setTimeout(() => {
+        setMessagesData((prev) =>
+          prev.map((conv) =>
+            conv.id === conversationId
+              ? { ...conv, messages: [...conv.messages, detectiveMsg] }
+              : conv
+          )
+        );
+      }, 800);
+    }
+  };
 
   return (
     <div className="fondoGeneral">
       <Nav2 />
       <div className="sospechosos-page">
-       
         {!selectedConversation ? (
           <>
-           <h2>Mensajes</h2>
-          <MensajesLista
-            conversations={messagesData}
-            onSelect={handleSelectConversation}
-          />
+            <h2>Mensajes</h2>
+            <MensajesLista
+              conversations={messagesData}
+              onSelect={handleSelectConversation}
+            />
           </>
         ) : (
           <Chat
@@ -105,7 +122,7 @@ const handleSendMessage = (conversationId, newMsg) => {
                 ]);
               }
             }}
-             onSendMessage={handleSendMessage}
+            onSendMessage={handleSendMessage}
           />
         )}
       </div>

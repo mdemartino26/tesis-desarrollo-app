@@ -25,6 +25,7 @@ const declaraciones = [
       "En los días previos a su muerte, Clara estaba más rara y ocupada con su grupo de estudio <span class='destacado'> tres veces por semana</span>, evitando hablar sobre ciertos temas.",
       "La última vez que la vio, Clara estaba cansada y preocupada, y <span class='destacado'> mencionó querer hablar sobre su futuro juntos, pero pospuso la conversación.</span>",
       "Luis está desconcertado y no puede entender quién pudo hacerle daño a Clara.",
+      "Sabe que Hernán la encontró y cree que fue la <span class='destacado'> última persona en ver a Clara con vida</span>",
     ],
     tipo: "sospechoso",
     nombre: "Luis",
@@ -36,7 +37,7 @@ const declaraciones = [
     id: 3,
     codigo: "DOC003",
     resumen: [
-      "Hernán López, de 22 años, estudiaba en la universidad con Clara Torres. Aunque no eran muy cercanos, compartían clases y formaban parte del mismo grupo de estudio. Clara era responsable y solidaria.", "El día de su muerte, era <span class='destacado'> uno de los dos dias de la semana en el que se reunían</span>, pero ella nunca apareció, lo cual fue inusual. Hernán le escribió, pero no obtuvo respuesta. Al salir de la biblioteca y, al atravesar el parque, encontró el cuerpo de Clara entre los arbustos. Impactado, llamó a la policía.", " <span class='destacado'> La última vez que la vio fue después de una clase de Procesos Cognitivos, cuando Clara se quedó hablando con el profesor, los eschuchó discutir y asumió que era por correcciones del último trabajo que entregaron. </span>",
+      "Hernán López, de 22 años, estudiaba en la universidad con Clara Torres. Aunque no eran muy cercanos, compartían clases y formaban parte del mismo grupo de estudio. Clara era responsable y solidaria.", "El día de su muerte, era <span class='destacado'> uno de los dos dias de la semana en el que se reunían</span>, pero ella nunca apareció, lo cual fue inusual. Hernán le escribió, pero no obtuvo respuesta. Al salir de la biblioteca y, al atravesar el parque, encontró el cuerpo de Clara entre los arbustos. Impactado, llamó a la policía.", " <span class='destacado'> La última vez que la vio con vida fue después de una clase de Procesos Cognitivos, cuando Clara se quedó hablando con el profesor, los eschuchó discutir y asumió que era por correcciones del último trabajo que entregaron. </span>",
     ],
     tipo: "sospechoso",
     nombre: "Hernán",
