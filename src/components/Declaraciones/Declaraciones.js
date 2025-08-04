@@ -37,7 +37,7 @@ const declaraciones = [
     id: 3,
     codigo: "DOC003",
     resumen: [
-      "Hernán López, de 22 años, estudiaba en la universidad con Clara Torres. Aunque no eran muy cercanos, compartían clases y formaban parte del mismo grupo de estudio. Clara era responsable y solidaria.", "El día de su muerte, era <span class='destacado'> uno de los dos dias de la semana en el que se reunían</span>, pero ella nunca apareció, lo cual fue inusual. Hernán le escribió, pero no obtuvo respuesta. Al salir de la biblioteca y, al atravesar el parque, encontró el cuerpo de Clara entre los arbustos. Impactado, llamó a la policía.", " <span class='destacado'> La última vez que la vio con vida fue después de una clase de Procesos Cognitivos, cuando Clara se quedó hablando con el profesor, los eschuchó discutir y asumió que era por correcciones del último trabajo que entregaron. </span>",
+      "Hernán López, de 22 años, estudiaba en la universidad con Clara Torres. Aunque no eran muy cercanos, compartían clases y formaban parte del mismo grupo de estudio. Clara era responsable y solidaria.", "El día de su muerte, era <span class='destacado'> uno de los dos dias de la semana en el que se reunían</span>, pero ella nunca apareció, lo cual fue inusual. Hernán le escribió, pero no obtuvo respuesta. Al salir de la biblioteca y, al atravesar el parque, encontró el cuerpo de Clara entre los arbustos. Impactado, llamó a la policía.", "  La última vez que la vio con vida fue después de una clase de Procesos Cognitivos,<span class='destacado'> Raúl Tomaso</span>, cuando Clara se quedó hablando con el profesor, los eschuchó discutir y asumió que era por correcciones del último trabajo que entregaron. ",
     ],
     tipo: "sospechoso",
     nombre: "Hernán López",
