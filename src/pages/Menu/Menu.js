@@ -2,6 +2,7 @@ import React from "react";
 import Nav2 from "../../components/Nav/Nav2";
 import VictimaInfo from "../../components/Victima/VictimaInfo";
 import "./styles.css";
+import NotificacionDetective from "../../components/Notificacion/Notificacion";
 
 function Menu() {
   const aplicaciones = [
@@ -15,6 +16,7 @@ function Menu() {
 
   return (
     <div className="menu fondoGeneral">
+      <NotificacionDetective /> 
       <Nav2 />
       <VictimaInfo nombre="Clara Torres" edad="22" causa="Estrangulación" />
 

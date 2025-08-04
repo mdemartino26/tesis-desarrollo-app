@@ -5,8 +5,13 @@ import MensajesLista from "../../components/Mensajes/MensajesLista";
 import Chat from "../../components/Mensajes/Chat";
 
 function Mensajes() {
+  const conversacionesLeidas =
+    JSON.parse(localStorage.getItem("conversacionesLeidas")) ?? [];
+
   const [selectedId, setSelectedId] = useState(null);
-  const [readConversations, setReadConversations] = useState([]);
+  const [readConversations, setReadConversations] =
+    useState(conversacionesLeidas);
+  const [isTyping, setIsTyping] = useState(false);
 
   const [messagesData, setMessagesData] = useState([
     {
@@ -14,7 +19,7 @@ function Mensajes() {
       name: "Detective Smith",
       icon: "🕵️",
       preview: "Hacé clic para ver los últimos mensajes...",
-      unread: true,
+      unread: !conversacionesLeidas.includes("smith"),
       messages: [
         {
           sender: "npc",
@@ -63,8 +68,27 @@ function Mensajes() {
         conv.id === id ? { ...conv, unread: false } : conv
       )
     );
+
+    const leidas =
+      JSON.parse(localStorage.getItem("conversacionesLeidas")) ?? [];
+    if (!leidas.includes(id)) {
+      const actualizadas = [...leidas, id];
+      localStorage.setItem(
+        "conversacionesLeidas",
+        JSON.stringify(actualizadas)
+      );
+      setReadConversations(actualizadas);
+    }
+
     setSelectedId(id);
   };
+
+  const normalize = (str) =>
+    str
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/\s+/g, "");
 
   const handleSendMessage = (conversationId, newMsg) => {
     setMessagesData((prev) =>
@@ -75,60 +99,93 @@ function Mensajes() {
       )
     );
 
-    const normalizedInput = newMsg.text.toLowerCase().replace(/\s+/g, "");
-    const target = "raúltomaso".toLowerCase().replace(/\s+/g, "");
+    const normalizedInput = normalize(newMsg.text);
+    const target = normalize("raúl tomaso");
 
-    if (normalizedInput === target && conversationId === "smith") {
-      const detectiveMsg = {
+    if (normalizedInput.includes(target) && conversationId === "smith") {
+      setIsTyping(true);
+
+      const typingMsg = {
         sender: "npc",
-        text: `Lo que no se dijo en voz alta, se deslizó en tinta...\n\ndejé en tu escritorio una pista clave, encontrá el objeto con el símbolo que responde este acertijo:\n\nSiempre están al frente,\npero no te abren la entrada.\nSirven para decir “te quiero”\no quedarte bien callada.`,
+        text: "...",
         time: 0,
       };
 
+      setMessagesData((prev) =>
+        prev.map((conv) =>
+          conv.id === conversationId
+            ? { ...conv, messages: [...conv.messages, typingMsg] }
+            : conv
+        )
+      );
+
       setTimeout(() => {
+        const detectiveMsg = {
+          sender: "npc",
+          text: `Lo que no se dijo en voz alta, se deslizó en tinta...\n\ndejé en tu escritorio una pista clave, encontrá el objeto con el símbolo que responde este acertijo:\n\nSiempre están al frente,\npero no te abren la entrada.\nSirven para decir “te quiero”\no quedarte bien callada.`,
+          time: 0,
+        };
+
         setMessagesData((prev) =>
           prev.map((conv) =>
             conv.id === conversationId
-              ? { ...conv, messages: [...conv.messages, detectiveMsg] }
+              ? {
+                  ...conv,
+                  messages: [...conv.messages.slice(0, -1), detectiveMsg],
+                }
               : conv
           )
         );
-      }, 800);
+
+        setIsTyping(false);
+      }, 2000);
     }
   };
 
-  return (
-    <div className="fondoGeneral">
-      <Nav2 />
-      <div className="sospechosos-page">
-        {!selectedConversation ? (
-          <>
-            <h2>Mensajes</h2>
-            <MensajesLista
-              conversations={messagesData}
-              onSelect={handleSelectConversation}
-            />
-          </>
-        ) : (
+ return (
+  <>
+    {!selectedConversation ? (
+      <div className="fondoGeneral">
+        <Nav2 />
+        <div className="sospechosos-page">
+          <h2>Mensajes</h2>
+          <MensajesLista
+            conversations={messagesData}
+            onSelect={handleSelectConversation}
+          />
+        </div>
+        <ButtonMenu />
+      </div>
+    ) : (
+      <div className="fondoGeneral">
+        <Nav2 />
+        <div className="sospechosos-page">
           <Chat
             conversation={selectedConversation}
             onBack={() => setSelectedId(null)}
             alreadyRead={readConversations.includes(selectedConversation?.id)}
             onFinishDisplay={() => {
               if (!readConversations.includes(selectedConversation?.id)) {
-                setReadConversations((prev) => [
-                  ...prev,
+                const nuevasLeidas = [
+                  ...readConversations,
                   selectedConversation.id,
-                ]);
+                ];
+                localStorage.setItem(
+                  "conversacionesLeidas",
+                  JSON.stringify(nuevasLeidas)
+                );
+                setReadConversations(nuevasLeidas);
               }
             }}
             onSendMessage={handleSendMessage}
+            isTyping={isTyping}
           />
-        )}
+        </div>
+        <ButtonMenu />
       </div>
-      <ButtonMenu />
-    </div>
-  );
+    )}
+  </>
+);
 }
 
 export default Mensajes;

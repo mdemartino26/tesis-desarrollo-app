@@ -41,9 +41,11 @@
 }
 
 .chat-messages {
-  height: 40vh;
-  overflow: hidden;
+  max-height: 60vh;
   overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .chat-name {

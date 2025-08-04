@@ -1,17 +1,24 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
+import NotificacionMensaje from "./NotificacionMensaje"; 
 
 function NotificacionDetective() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    const yaMostrada = localStorage.getItem("notificacionDetectiveMostrada");
+
+    if (yaMostrada) return; 
+
     const timer = setTimeout(() => {
       setVisible(true);
 
       setTimeout(() => {
         setVisible(false);
-      }, 5000); // 👈 Ocultar a los 5 segundos
-    }, 10000); // 👈 Mostrar después de 10 segundos
+      }, 3000);
+
+      localStorage.setItem("notificacionDetectiveMostrada", "true");
+    }, 10000); 
 
     return () => clearTimeout(timer);
   }, []);
@@ -19,9 +26,11 @@ function NotificacionDetective() {
   if (!visible) return null;
 
   return (
-    <div className="notificacion-detective">
-      🕵️ Mensaje nuevo del Detective Smith
-    </div>
+    <NotificacionMensaje
+      texto="Mensaje nuevo del Detective Smith"
+      icono="/img/mensajes.png"
+      onClose={() => setVisible(false)}
+    />
   );
 }
 
