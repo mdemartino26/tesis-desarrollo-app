@@ -1,0 +1,35 @@
+.call-log {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.call-button {
+  padding: 1rem;
+  background-color: #f2d7b6;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.3s;
+}
+
+.call-button:hover {
+  background-color: #e1c69a;
+}
+
+.call-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.llamada-status {
+  margin-top: 2rem;
+  font-weight: bold;
+  color: white;
+  background-color: #2a2a2a;
+  padding: 1rem;
+  border-radius: 10px;
+}
