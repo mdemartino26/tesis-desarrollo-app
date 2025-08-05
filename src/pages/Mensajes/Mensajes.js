@@ -102,90 +102,110 @@ function Mensajes() {
     const normalizedInput = normalize(newMsg.text);
     const target = normalize("raúl tomaso");
 
-    if (normalizedInput.includes(target) && conversationId === "smith") {
-      setIsTyping(true);
+    if (conversationId === "smith") {
+      if (normalizedInput.includes(target)) {
+        setIsTyping(true);
 
-      const typingMsg = {
-        sender: "npc",
-        text: "...",
-        time: 0,
-      };
-
-      setMessagesData((prev) =>
-        prev.map((conv) =>
-          conv.id === conversationId
-            ? { ...conv, messages: [...conv.messages, typingMsg] }
-            : conv
-        )
-      );
-
-      setTimeout(() => {
-        const detectiveMsg = {
+        const typingMsg = {
           sender: "npc",
-          text: `Lo que no se dijo en voz alta, se deslizó en tinta...\n\ndejé en tu escritorio una pista clave, encontrá el objeto con el símbolo que responde este acertijo:\n\nSiempre están al frente,\npero no te abren la entrada.\nSirven para decir “te quiero”\no quedarte bien callada.`,
+          text: "...",
           time: 0,
         };
 
         setMessagesData((prev) =>
           prev.map((conv) =>
             conv.id === conversationId
-              ? {
-                  ...conv,
-                  messages: [...conv.messages.slice(0, -1), detectiveMsg],
-                }
+              ? { ...conv, messages: [...conv.messages, typingMsg] }
               : conv
           )
         );
 
-        setIsTyping(false);
-      }, 2000);
+        setTimeout(() => {
+          const detectiveMsg = {
+            sender: "npc",
+            text: `Lo que no se dijo en voz alta, se deslizó en tinta...\n\ndejé en tu escritorio una pista clave, encontrá el objeto con el símbolo que responde este acertijo:\n\nSiempre están al frente,\npero no te abren la entrada.\nSirven para decir “te quiero”\no quedarte bien callada.`,
+            time: 0,
+          };
+
+          setMessagesData((prev) =>
+            prev.map((conv) =>
+              conv.id === conversationId
+                ? {
+                    ...conv,
+                    messages: [...conv.messages.slice(0, -1), detectiveMsg],
+                  }
+                : conv
+            )
+          );
+
+          setIsTyping(false);
+        }, 2000);
+      } else {
+        const responseMsg = {
+          sender: "npc",
+          text:
+            "Mmm... creo que vas por el camino correcto, pero habría que releer las declaraciones para estar seguros",
+          time: 0,
+        };
+
+        setTimeout(() => {
+          setMessagesData((prev) =>
+            prev.map((conv) =>
+              conv.id === conversationId
+                ? { ...conv, messages: [...conv.messages, responseMsg] }
+                : conv
+            )
+          );
+        }, 1000);
+      }
     }
   };
 
- return (
-  <>
-    {!selectedConversation ? (
-      <div className="fondoGeneral">
-        <Nav2 />
-        <div className="sospechosos-page">
-          <h2>Mensajes</h2>
-          <MensajesLista
-            conversations={messagesData}
-            onSelect={handleSelectConversation}
-          />
+  return (
+    <>
+      {!selectedConversation ? (
+        <div className="fondoGeneral">
+          <Nav2 />
+          <div className="sospechosos-page">
+            <h2>Mensajes</h2>
+            <MensajesLista
+              conversations={messagesData}
+              onSelect={handleSelectConversation}
+            />
+          </div>
+          <ButtonMenu />
         </div>
-        <ButtonMenu />
-      </div>
-    ) : (
-      <div className="fondoGeneral">
-        <Nav2 />
-        <div className="sospechosos-page">
-          <Chat
-            conversation={selectedConversation}
-            onBack={() => setSelectedId(null)}
-            alreadyRead={readConversations.includes(selectedConversation?.id)}
-            onFinishDisplay={() => {
-              if (!readConversations.includes(selectedConversation?.id)) {
-                const nuevasLeidas = [
-                  ...readConversations,
-                  selectedConversation.id,
-                ];
-                localStorage.setItem(
-                  "conversacionesLeidas",
-                  JSON.stringify(nuevasLeidas)
-                );
-                setReadConversations(nuevasLeidas);
-              }
-            }}
-            onSendMessage={handleSendMessage}
-            isTyping={isTyping}
-          />
+      ) : (
+        <div className="fondoGeneral">
+          <Nav2 />
+          <div className="sospechosos-page">
+            <Chat
+              conversation={selectedConversation}
+              onBack={() => setSelectedId(null)}
+              alreadyRead={readConversations.includes(
+                selectedConversation?.id
+              )}
+              onFinishDisplay={() => {
+                if (!readConversations.includes(selectedConversation?.id)) {
+                  const nuevasLeidas = [
+                    ...readConversations,
+                    selectedConversation.id,
+                  ];
+                  localStorage.setItem(
+                    "conversacionesLeidas",
+                    JSON.stringify(nuevasLeidas)
+                  );
+                  setReadConversations(nuevasLeidas);
+                }
+              }}
+              onSendMessage={handleSendMessage}
+              isTyping={isTyping}
+            />
+          </div>
         </div>
-        <ButtonMenu />
-      </div>
-    )}
-  </>
-);
+      )}
+    </>
+  );
 }
 
 export default Mensajes;

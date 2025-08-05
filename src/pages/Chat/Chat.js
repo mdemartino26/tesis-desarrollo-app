@@ -7,12 +7,12 @@ function Chat() {
   const [mensajes, setMensajes] = useState([
     {
       id: 1,
-      sender: "De Martino (Detective)",
+      sender: "Detective Blanco",
       text: "El detective Smith me pidió que busquemos quién fue la última persona que vio a Clara.",
     },
     {
       id: 2,
-      sender: "Jugador 2",
+      sender: "Detective Escarlata",
       text: "Me parece que Hernán fue la última persona que la vio con vida.",
     },
   ]);
@@ -49,7 +49,7 @@ function Chat() {
     <div className="fondoGeneral">
       <Nav2 />
       <div className="sospechosos-page">
-        <h2>Chat de Jugadores</h2>
+        <h3 className="header-1">Equipo Especial 263</h3>
 
         <div className="chat-messages">
           {mensajes.map((msg) => (
@@ -63,7 +63,7 @@ function Chat() {
 
         <input
           type="text"
-          className="chat-reply-input"
+          className="chat-reply-input input-2"
           placeholder="Escribí tu mensaje..."
           value={inputValue}
           onChange={handleInputChange}

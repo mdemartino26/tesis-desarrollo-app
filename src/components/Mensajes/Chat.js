@@ -43,7 +43,6 @@ export default function Chat({
     return () => timers.forEach(clearTimeout);
   }, [conversation.id, conversation.name, alreadyRead, onFinishDisplay]);
 
-  // Scroll al fondo cada vez que cambia displayedMessages
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [displayedMessages]);
